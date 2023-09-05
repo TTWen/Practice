@@ -1,7 +1,6 @@
 package _3_CasualTryout._0_Sort;
 
 import java.util.Arrays;
-import java.util.Queue;
 
 public class _4_QuickSort {
 
@@ -19,7 +18,7 @@ public class _4_QuickSort {
     }
 
 
-    public static int[] QuickSort(int[] arr, int left, int right) {
+    public static void QuickSort(int[] arr, int left, int right) {
 
         if (left < right) {
             int i = left;
@@ -49,13 +48,23 @@ public class _4_QuickSort {
             QuickSort(arr, i + 1, right);
         }
 
-        return arr;
     }
 
 }
 
 
 /*
+最好/一般时间复杂度：
+递归计算，可以类比二分法，那么递归到结束时，要计算递归深度h，2h次方=n，h=log以2为底的n
+每层递归都会遍历整个数组，因此为n，
+所以时间复杂度为nlog以2为底的n，约等于nlogn
+
+最坏时间复杂度：
+最坏的情况是数组本身是有序的
+递归到第一层时，第一个数已经在其所应该在的位置，其左边为空，需要对右边所有数进行递归，递归到结束时，递归深度为n
+时间复杂度为n²
+
+
 快速排序是由东尼·霍尔所发展的一种排序算法。
 在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。
 事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。
