@@ -7,11 +7,13 @@
 
 package _0_DataStructure._0_LinkList;
 
+import java.util.List;
+
 /*
 * two sorted list merged into one sorted list
 * 1，2，4
 * 1，3，4
-* ==》1，1，2，3，4，4
+* ==>1，1，2，3，4，4
 * */
 class ListNode {
     int val;
@@ -68,8 +70,8 @@ public class _21_Merge_Two_Sorted_Lists {
     }
 
     public static void main(String[] args) {
-        ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-        ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        ListNode list1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+        ListNode list2 = new ListNode(2, new ListNode(3, new ListNode(6)));
 
         ListNode res = mergeTwoLists(list1, list2);
         while(res != null) {

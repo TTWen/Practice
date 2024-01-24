@@ -42,10 +42,30 @@ public class _141_Linked_List_Cycle {
         return false;
     }
 
+    public static boolean hasCycle1(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        ListNode p = head;
+        ListNode q = head;
+
+        while (p != null && p.next != null) {
+            p = p.next.next;
+            q = q.next;
+
+            if (p == q) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public static void main(String[] args) {
 //        ListNode head = new ListNode(3, new ListNode(2, new ListNode(0, new ListNode(-4))));
         ListNode head = new ListNode(1, new ListNode(2));
-        boolean res = hasCycle(head);
+        boolean res = hasCycle1(head);
         System.out.println(res);
     }
 }

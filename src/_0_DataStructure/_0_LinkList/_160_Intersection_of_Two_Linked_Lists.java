@@ -25,7 +25,7 @@ public class _160_Intersection_of_Two_Linked_Lists {
             p = p.next;
             len1++;
         }
-        System.out.println(len1);
+//        System.out.println(len1);
 
         int len2 = 0;
         ListNode q = headB;
@@ -33,7 +33,7 @@ public class _160_Intersection_of_Two_Linked_Lists {
             q = q.next;
             len2++;
         }
-        System.out.println(len2);
+//        System.out.println(len2);
 
         p = headA;
         q = headB;
@@ -55,6 +55,55 @@ public class _160_Intersection_of_Two_Linked_Lists {
         }
 
         while (p != null) {
+            if (p == q) {
+                res = p;
+                return res;
+            }
+            else {
+                p = p.next;
+                q = q.next;
+            }
+        }
+        return res;
+    }
+
+    public static ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
+        ListNode res = null;
+
+        int len1 = 0;
+        int len2 = 0;
+
+        ListNode p =headA;
+        ListNode q = headB;
+
+        while (p != null) {
+            len1 ++;
+            p = p.next;
+        }
+
+        while (q != null) {
+            len2 ++;
+            q = q.next;
+        }
+
+        int difference = Math.abs(len1 - len2);
+
+        p = headA;
+        q = headB;
+
+        if (len1 > len2) {
+            for (int i = 0; i < difference; i++) {
+                p = p.next;
+            }
+        }
+        else {
+            for (int i = 0; i < difference; i++) {
+                q = q.next;
+            }
+        }
+
+        while (p != null) {
+
             if (p == q) {
                 res = p;
                 return res;
@@ -94,7 +143,7 @@ public class _160_Intersection_of_Two_Linked_Lists {
 //            headB = headB.next;
 //        }
 
-        ListNode res = getIntersectionNode (headA, headB);
+        ListNode res = getIntersectionNode1 (headA, headB);
 
         if (res == null) {
             System.out.println("null");

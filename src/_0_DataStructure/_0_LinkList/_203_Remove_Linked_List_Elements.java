@@ -7,6 +7,8 @@ package _0_DataStructure._0_LinkList;
  * @Description
  */
 
+import java.util.List;
+
 /**
  * Given the head of a linked list and an integer val,
  * remove all the nodes of the linked list that has Node.val == val,
@@ -46,13 +48,12 @@ public class _203_Remove_Linked_List_Elements {
         return newHead.next;
 
     }
-
     public static void main(String[] args) {
-//        ListNode head = new ListNode(1, new ListNode(2, new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6 )))))));
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6 )))))));
 //        ListNode head = new ListNode(5, new ListNode(5, new ListNode(5)));
-        ListNode head = new ListNode(7, new ListNode(7, new ListNode(7, new ListNode(7))));
+//        ListNode head = new ListNode(7, new ListNode(7, new ListNode(7, new ListNode(7))));
 
-        ListNode res = removeElements(head, 7);
+        ListNode res = removeElements(head, 6);
 
         while (res != null) {
             System.out.println(res.val);

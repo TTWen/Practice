@@ -46,17 +46,35 @@ public class _83_Remove_Duplicates_from_Sorted_List {
         return res;
     }
 
+
+    public static ListNode deleteDuplicates1(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+
+        ListNode p = head;
+        while(p != null && p.next != null) {
+            if (p.val == p.next.val) {
+                p.next = p.next.next;
+            }
+            else {
+                p = p.next;
+            }
+        }
+
+        return head;
+    }
     public static void main(String[] args) {
 
-//        ListNode head = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))));
+        ListNode head = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))));
+//        ListNode head = new ListNode(1, new ListNode(1, new ListNode(2)));
 
 //        ListNode head = new ListNode(1, new ListNode(1, new ListNode(2)));
-        ListNode head = null;
-        ListNode res = deleteDuplicates(head);
+//        ListNode head = null;
+        ListNode res = deleteDuplicates1(head);
 
 
         while(res != null) {
-            System.out.print(res.val + "->");
+            System.out.print(res.val);
             res = res.next;
         }
     }
