@@ -26,11 +26,15 @@ public class _237_Delete_Node_in_a_Linked_List {
      * 把下一个节点的值复制到当前结点，然后跳过下一个结点
      */
     public void deleteNode(ListNode node) {
+//        node.val = node.next.val;
+//        node.next = node.next.next;
+
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
     public static void main(String[] args) {
+
 
     }
 }

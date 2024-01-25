@@ -19,28 +19,40 @@ package _0_DataStructure._0_LinkList;
  * Explanation: (101) in base 2 = (5) in base 10
  *
  * 可以理解为 1*2 相当于左移，再加上当前的值
- * 如：1234
+ * 如：1010
  * ==》
  * 0
  * 0*10+1=1
- * 1*10+2=12
- * 12*10+3=123
- * 123*10+4=1234
+ * 1*10+0=10
+ * 10*10+1=101
+ * 101*10+0=1010
  */
 public class _1290_Convert_Binary_Number_in_a_Linked_List_to_Integer {
     public static int getDecimalValue(ListNode head) {
 
         int res = 0;
+        System.out.println(res);
         while (head!= null) {
             res = res * 2 + head.val;
+            System.out.println(res);
+
             head = head.next;
         }
         return res;
     }
 
+    public static int getDecimalValue1(ListNode head) {
+        int res = 0;
+        while (head != null) {
+            res = res * 2 + head.val;
+            head = head.next;
+        }
+
+        return res;
+    }
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(0, new ListNode(1)));
-        int res = getDecimalValue(head);
+        int res = getDecimalValue1(head);
         System.out.println(res);
     }
 }

@@ -7,6 +7,8 @@ package _0_DataStructure._0_LinkList;
  * @Description
  */
 
+import java.util.List;
+
 /**
  * Given the head of a singly linked list, return true if it is a palindrome.
  * [1,2,2,1]
@@ -68,6 +70,55 @@ public class _234_Palindrome_Linked_List {
         return true;
     }
 
+
+    public static boolean isPalindrome1(ListNode head) {
+
+        /*
+        对 head 进行 reverse 得到 newHead，
+        遍历 head 和 newHead
+         */
+
+        /*
+        head
+        1->2->3->4->5->null
+
+        newHead
+        5->4->3->2->1->null
+
+        1->null
+         */
+        ListNode newHead = null;
+        ListNode p = head;
+
+        while (p != null) {
+            ListNode temp = new ListNode(p.val);
+            temp.next = newHead;
+            newHead = temp;
+            p = p.next;
+        }
+
+//        while (newHead != null) {
+//            System.out.println(newHead.val);
+//            newHead = newHead.next;
+//        }
+
+        ListNode h1 = head;
+        ListNode h2 = newHead;
+
+        while (h1 != null) {
+            if (h1.val == h2.val) {
+                h1 = h1.next;
+                h2 = h2.next;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+
+        return true;
+    }
     /**
      *
      * @param head
@@ -79,6 +130,8 @@ public class _234_Palindrome_Linked_List {
      * pre 一开始要为 null
      * 反转后 head 要指向 pre
      * 同时 pre，head，p 都在后移
+     * 1->2->3->4->null
+     * null<-1->2->3->4->null
      */
     public static ListNode reverse(ListNode head) {
         ListNode pre = null;
@@ -92,8 +145,9 @@ public class _234_Palindrome_Linked_List {
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(1))));
+//        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(2, new ListNode(1)))));
 //        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        System.out.println(isPalindrome(head));
+        System.out.println(isPalindrome1(head));
     }
 }
