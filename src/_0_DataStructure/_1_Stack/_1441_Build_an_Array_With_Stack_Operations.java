@@ -51,6 +51,37 @@ public class _1441_Build_an_Array_With_Stack_Operations {
         return res;
     }
 
+    public static List<String> buildArray1(int[] target, int n) {
+
+        List<String> res = new ArrayList<>();
+
+        int j = 0; // j 遍历 target
+        for (int i = 1; i <= n && j < target.length; i++) {
+            // i 遍历 1~n
+            if (target[j] == i) {
+                res.add("Push");
+                j++;
+
+                /*
+                target = {1,3}
+                n =  {1,2,3}
+
+                n=1：1=1，push，target前移
+                n=2：3≠2，push，pop，target不动
+                n=3：3=3，push，target前移
+                 */
+            }
+            else {
+                res.add("Push");
+                res.add("Pop");
+            }
+
+        }
+
+
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] target = new int[] {1,3};
         int n = 3;
@@ -61,7 +92,7 @@ public class _1441_Build_an_Array_With_Stack_Operations {
 //        System.out.println(tar1.equals(tar2));
 //        System.out.println(Arrays.toString(tar1).equals( Arrays.toString(tar2)));
 
-        List<String> res = buildArray(target, n);
+        List<String> res = buildArray1(target, n);
         for (String s: res) {
             System.out.println(s);
         }

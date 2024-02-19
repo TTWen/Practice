@@ -66,10 +66,41 @@ public class _20_Valid_Parentheses {
         return false;
     }
 
+    public static boolean isValid1(String s) {
+        int len = s.length();
+        if (len == 0 || len%2 == 1) {
+            return false;
+        }
+
+        Stack stack = new Stack();
+        for (int i = 0; i < s.length(); i++) {
+            char cur = (char) s.charAt(i);
+//            System.out.println(cur);
+
+            if (stack.isEmpty()) {
+                stack.push(cur);
+            }
+            else {
+                char top = (char) stack.pop();
+                if ((top == '[' && cur == ']') || (top == '(' && cur == ')') || (top == '{' && cur == '}')) {
+                    // 前面已经把 top 给 pop 出来了，所以如果匹配就什么都不做；如果不匹配，就 push 回去
+                    continue;
+                }
+                else {
+                    stack.push(top);
+                    stack.push(cur);
+                }
+            }
+        }
+        if (!stack.isEmpty())
+            return false;
+        return true;
+    }
     public static void main(String[] args) {
 
 //        String s = "()[]{}";
-        String s= "({[)";
-        System.out.println(isValid(s));
+//        String s= "({[)";
+        String s= "(())[]{}";
+        System.out.println(isValid1(s));
     }
 }

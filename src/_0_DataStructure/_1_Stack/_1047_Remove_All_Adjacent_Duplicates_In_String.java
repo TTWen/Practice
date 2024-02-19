@@ -1,5 +1,6 @@
 package _0_DataStructure._1_Stack;
 
+import java.util.Objects;
 import java.util.Stack;
 
 /**
@@ -33,10 +34,40 @@ public class _1047_Remove_All_Adjacent_Duplicates_In_String {
         return res.reverse().toString();
     }
 
+    public static String removeDuplicates1(String s) {
+        StringBuilder res = new StringBuilder("");
+
+        if (s.length() <= 1) {
+            return s;
+        }
+
+        char[]chars = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
+
+        for( char c: chars) {
+            if (stack.isEmpty()) {
+                stack.push(c);
+            }
+            else {
+                char peek = stack.peek();
+                if (Objects.equals(peek, c)) {
+                    stack.pop();
+                }
+                else {
+                    stack.push(c);
+                }
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            res.append(stack.pop());
+        }
+        return res.reverse().toString();
+    }
     public static void main(String[] args) {
 
-        String s = "abbaca";
-        String res = removeDuplicates(s);
+        String s = "abbacadda";
+        String res = removeDuplicates1(s);
         System.out.println(res);
     }
 }

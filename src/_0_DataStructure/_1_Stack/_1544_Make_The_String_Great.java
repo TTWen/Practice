@@ -53,10 +53,50 @@ public class _1544_Make_The_String_Great {
         return sb.reverse().toString();
     }
 
+    public static String makeGood1(String s) {
+        if (s.length() <= 1) {
+            return s;
+        }
+
+        Stack<Character> stack = new Stack<>();
+        for (char c: s.toCharArray()) {
+            if (stack.isEmpty()) {
+                stack.push(c);
+            }
+            else {
+                char peek = stack.peek();
+                if (peek >= 'a' && peek <= 'z') {
+                    if (c == peek - 32) {
+                        stack.pop();
+                    }
+                    else {
+                        stack.push(c);
+                    }
+                }
+                else {
+                    if (peek >= 'A' && peek <= 'Z') {
+                        if (c == peek + 32) {
+                            stack.pop();
+                        }
+                        else {
+                            stack.push(c);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        StringBuilder res = new StringBuilder("");
+        while (!stack.isEmpty()) {
+            res.append(stack.pop());
+        }
+        return res.reverse().toString();
+    }
     public static void main(String[] args) {
 
-        String s = "a";
-        String res = makeGood(s);
+        String s = "leEeetcode";
+        String res = makeGood1(s);
         System.out.println("res = " + res);
 
 

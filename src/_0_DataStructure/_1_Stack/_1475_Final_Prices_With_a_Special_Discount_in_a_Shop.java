@@ -35,7 +35,8 @@ public class _1475_Final_Prices_With_a_Special_Discount_in_a_Shop {
                 }
                 stack.push(prices[i]);
             }
-            if (!stack.isEmpty()) System.out.println(stack.peek());
+            if (!stack.isEmpty())
+                System.out.println(stack.peek());
 
         }
 
